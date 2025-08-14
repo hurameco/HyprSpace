@@ -76,12 +76,4 @@ else
 fi
 success "GRUB installation and configuration completed."
 
-clear
-logo
-echo -e "${SUCCESS_COLOR}
-----------------------------------------
-Setup completed in [$(elapsed_time)].
-
-Please reboot the system!
-----------------------------------------
-"
+sleep 2
