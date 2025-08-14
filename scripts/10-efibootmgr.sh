@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source ./core/debugFunctions.sh
-
 logo
 notice "Instaling and Configuring GRUB bootloader! [1/1]\n"
 
