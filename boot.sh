@@ -18,7 +18,7 @@ if [ -d "$hyprspace_path" ]; then
   read -r overwrite < /dev/tty
   overwrite=${overwrite:-Y}  # Default to 'Y' if empty
   overwrite=$(echo "$overwrite" | tr '[:upper:]' '[:lower:]')  # Convert to lowercase
-  if [ "$overwrite" -ne "y" ]; then
+  if [ "$overwrite" != "y" ]; then
       echo -e "Exiting..."
       exit 1
   fi
@@ -26,12 +26,15 @@ if [ -d "$hyprspace_path" ]; then
 fi
 
 # Install required packages
+echo -e "Updating system..."
+sudo pacman -Syu --noconfirm >/dev/null 2>&1
 echo -e "Installing required packages..."
-sudo pacman -Syu --noconfirm base-devel git >/dev/null 2>&1
+sudo pacman -S --noconfirm base-devel git >/dev/null 2>&1
 
 # Clone the repository
 echo -e "Cloning the HyprSpace repository..."
-git clone https://github.com/hurameco/hyprspace.git "$hyprspace_path" > /dev/null 2>&1
+
+git clone --progress https://github.com/hurameco/hyprspace.git "$hyprspace_path"
 # Change directory to the cloned repository
 cd "$hyprspace_path"
 
