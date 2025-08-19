@@ -36,12 +36,12 @@ echo -e "Cloning the HyprSpace repository..."
 
 git clone --progress https://github.com/hurameco/hyprspace.git "$hyprspace_path"
 # Change directory to the cloned repository
-cd "$hyprspace_path"
+# cd "$hyprspace_path"
 
-# Run the installer
-source ./installer.sh
+# # Run the installer
+# source ./installer.sh
 
-logo
-info "Welcome to HyprSpace Installer!"
-read -n 1 -s < /dev/tty
-sleep 2
+# logo
+# info "Welcome to HyprSpace Installer!"
+# read -n 1 -s < /dev/tty
+# sleep 2
