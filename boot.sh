@@ -1,5 +1,7 @@
 #!/bin/bash
 
+clear
+
 printf "Welcome to HyprSpace Installer!\n"
 printf "This script will install and configure HyprSpace on your system.\n"
 printf "Please read the README.md file for more information.\n"
