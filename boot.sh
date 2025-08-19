@@ -27,8 +27,8 @@ if [ -d "$hyprspace_path" ]; then
 fi
 
 # Install required packages
-sudo pacman -Syu --noconfirm >/dev/null 2>&1
-sudo pacman -S --noconfirm base-devel git >/dev/null 2>&1
+echo -e "Installing required packages..."
+sudo pacman -Syu --noconfirm base-devel git >/dev/null 2>&1
 
 # Clone the repository
 git clone https://github.com/hurameco/hyprspace.git "$hyprspace_path"
