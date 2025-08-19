@@ -12,7 +12,7 @@ fi
 # Setup GPG configuration with multiple keyservers for better reliability focusing on privacy
 rnotice "GPG :: [2/2] :: Configuring GPG"
 sudo mkdir -p /etc/gnupg
-sudo cp "$hyprspace_path/default-configs/gpg/dirmngr.conf /etc/gnupg/"
+sudo cp "$hyprspace_path/default-configs/gpg/dirmngr.conf" /etc/gnupg/
 sudo chmod 644 /etc/gnupg/dirmngr.conf
 sudo gpgconf --kill dirmngr || true
 sudo gpgconf --launch dirmngr || true
