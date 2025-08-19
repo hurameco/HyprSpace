@@ -5,7 +5,7 @@ echo -e "This script will install and configure HyprSpace on your system."
 echo -e "Please read the README.md file for more information."
 
 echo -e "\nPress any key to continue... Ctrl+C to exit."
-read -n 1 -s
+read -n 1 -s < /dev/tty
 clear
 
 # Default HyprSpace path
@@ -15,7 +15,7 @@ hyprspace_path="$HOME/.hyprspace"
 if [ -d "$hyprspace_path" ]; then
   # If the path exists, ask the user if they want to overwrite it
   overwrite = "y"
-  echo -e "The path $hyprspace_path already exists. Do you want to overwrite it? (Y/n)"
+  echo -e "The path $hyprspace_path already exists.\nDo you want to overwrite it? (Y/n)"
   read -r overwrite
   if [ "$overwrite" != "y" ]; then
       echo -e "Exiting..."
