@@ -14,8 +14,8 @@ echo "net.ipv4.tcp_mtu_probing=1" | sudo tee -a /etc/sysctl.d/99-sysctl.conf
 rnotice "Network :: [3/4] :: Configuring Network Manager (IWD)"
 if ! command -v iwctl &>/dev/null; then
     sudo pacman -S --noconfirm --needed iwd >/dev/null 2>&1
-    hold
     sudo systemctl enable --now iwd.service
+    hold
 fi
 
 # Prevent systemd-networkd-wait-online timeout on boot
