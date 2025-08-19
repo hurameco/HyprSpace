@@ -7,7 +7,7 @@ rnotice "Boot :: [1/6] :: Installing necessary packages for GRUB"
 sudo pacman -S grub efibootmgr os-prober --noconfirm >/dev/null 2>&1
 
 # Remove existing GRUB entries from efibootmgr
-hold
+
 rnotice "Boot :: [2/6] :: Checking for existing GRUB entries in efibootmgr"
 grub_entries=$(efibootmgr | grep -i 'grub' | grep -o 'Boot[0-9A-F]*' | cut -c5-)
 if [ -n "$grub_entries" ]; then
@@ -15,6 +15,8 @@ if [ -n "$grub_entries" ]; then
         efibootmgr -b "$entry_id" -B >/dev/null 2>&1
     done
 fi
+
+hold
 
 # Modify /mnt/etc/default/grub to uncomment the last line
 rnotice "Boot :: [3/6] :: Modifying /etc/default/grub to uncomment the last line"
