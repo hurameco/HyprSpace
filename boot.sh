@@ -51,6 +51,7 @@ git clone --progress https://github.com/hurameco/hyprspace.git "$hyprspace_path"
 cd "$hyprspace_path"
 
 # Run the installer
+source ./core/utils.sh
 source ./installer.sh
 
 # logo
