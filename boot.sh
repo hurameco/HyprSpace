@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source ./core/utils.sh
-
 echo -e "Welcome to HyprSpace Installer!\n"
 echo -e "This script will install and configure HyprSpace on your system.\n"
 echo -e "Please read the README.md file for more information.\n"
