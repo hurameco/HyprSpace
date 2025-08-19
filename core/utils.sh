@@ -23,18 +23,19 @@ elapsed_time() {
 }
 
 # Enhanced logging functions with tab alignment
-spam()     { echo -e "${GRAY}[${ORANGE}$(elapsed_time)${GRAY}] ${SPAM_COLOR}SPAM${NC}\t\t${GRAY}|${NC} $*"; }
-debug()    { echo -e "${GRAY}[${ORANGE}$(elapsed_time)${GRAY}] ${DEBUG_COLOR}DEBUG${NC}\t${GRAY}|${NC} $*"; }
-verbose()  { echo -e "${GRAY}[${ORANGE}$(elapsed_time)${GRAY}] ${VERBOSE_COLOR}VERBOSE${NC}\t${GRAY}|${NC} $*"; }
-info()     { echo -e "${GRAY}[${ORANGE}$(elapsed_time)${GRAY}] ${INFO_COLOR}INFO${NC}\t\t${GRAY}|${NC} $*"; }
-notice()   { echo -e "${GRAY}[${ORANGE}$(elapsed_time)${GRAY}] ${NOTICE_COLOR}NOTICE${NC}\t${GRAY}|${NC} $*"; }
-warning()  { echo -e "${GRAY}[${ORANGE}$(elapsed_time)${GRAY}] ${WARNING_COLOR}WARNING${NC}\t${GRAY}|${NC} $*"; }
-success()  { echo -e "${GRAY}[${ORANGE}$(elapsed_time)${GRAY}] ${SUCCESS_COLOR}SUCCESS${NC}\t${GRAY}|${NC} $*"; }
-error()    { echo -e "${GRAY}[${ORANGE}$(elapsed_time)${GRAY}] ${ERROR_COLOR}ERROR${NC}\t${GRAY}|${NC} $*"; exit 1; }
-critical() { echo -e "${GRAY}[${ORANGE}$(elapsed_time)${GRAY}] ${CRITICAL_COLOR}CRITICAL${NC}\t${GRAY}|${NC} $*"; exit 1; }
+spam()     { printf "${GRAY}[${ORANGE}$(elapsed_time)${GRAY}] ${SPAM_COLOR}SPAM${NC}\t\t${GRAY}|${NC} %s\n" "$*"; }
+debug()    { printf "${GRAY}[${ORANGE}$(elapsed_time)${GRAY}] ${DEBUG_COLOR}DEBUG${NC}\t${GRAY}|${NC} %s\n" "$*"; }
+verbose()  { printf "${GRAY}[${ORANGE}$(elapsed_time)${GRAY}] ${VERBOSE_COLOR}VERBOSE${NC}\t${GRAY}|${NC} %s\n" "$*"; }
+info()     { printf "${GRAY}[${ORANGE}$(elapsed_time)${GRAY}] ${INFO_COLOR}INFO${NC}\t\t${GRAY}|${NC} %s\n" "$*"; }
+notice()   { printf "${GRAY}[${ORANGE}$(elapsed_time)${GRAY}] ${NOTICE_COLOR}NOTICE${NC}\t${GRAY}|${NC} %s\n" "$*"; }
+warning()  { printf "${GRAY}[${ORANGE}$(elapsed_time)${GRAY}] ${WARNING_COLOR}WARNING${NC}\t${GRAY}|${NC} %s\n" "$*"; }
+success()  { printf "${GRAY}[${ORANGE}$(elapsed_time)${GRAY}] ${SUCCESS_COLOR}SUCCESS${NC}\t${GRAY}|${NC} %s\n" "$*"; }
+error()    { printf "${GRAY}[${ORANGE}$(elapsed_time)${GRAY}] ${ERROR_COLOR}ERROR${NC}\t${GRAY}|${NC} %s\n" "$*"; exit 1; }
+critical() { printf "${GRAY}[${ORANGE}$(elapsed_time)${GRAY}] ${CRITICAL_COLOR}CRITICAL${NC}\t${GRAY}|${NC} %s\n" "$*"; exit 1; }
 
 logo() {
-    echo -e "${SUCCESS_COLOR}
+    clear
+    printf "${SUCCESS_COLOR}
 ╔══════════════════════════════════════════════════════════════════════════════════╗
 ║                                                                                  ║
 ║  ██╗  ██╗██╗   ██╗██████╗ ██████╗ ███████╗██████╗  █████╗  ██████╗███████╗       ║
@@ -45,7 +46,7 @@ logo() {
 ║  ╚═╝  ╚═╝   ╚═╝   ╚═╝     ╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝  ╚═╝ ╚═════╝╚══════╝       ║
 ║                                                                                  ║
 ║  ${ORANGE}A custom installation for ${WARNING_COLOR}Hyprland${NC} ${ORANGE}by ${CRITICAL_COLOR}hurameco${SUCCESS_COLOR}                                  ║
-╚══════════════════════════════════════════════════════════════════════════════════╝${NC}"
+╚══════════════════════════════════════════════════════════════════════════════════╝${NC}\n"
 }
 
 export -f spam debug verbose info notice warning success error critical elapsed_time

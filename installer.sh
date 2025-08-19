@@ -1,3 +1,5 @@
 #!/bin/bash
-#
-info "test"
+
+logo
+info "Welcome to HyprSpace Installer!"
+sleep 2
