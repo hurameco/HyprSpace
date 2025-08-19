@@ -1,7 +1,7 @@
 #!/bin/bash
 
 logo
-rnotice "Configuring git [1/1]\n\n"
+notice "Configuring git [1/1]\n\n"
 
 echo -e "Enter your git username:\n> "
 read -r git_username < /dev/tty
