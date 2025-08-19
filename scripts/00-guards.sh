@@ -30,5 +30,5 @@ pacman -Qe plasma-desktop &>/dev/null && error "KDE Plasma is already installed.
 rnotice "Guards :: [6/6] :: Checking if Hyprland is already installed!"
 pacman -Qe hyprland &>/dev/null && error "Hyprland is already installed. Please remove it before running this script."
 
-rsuccess "System agrees with all requirements!"
-sleep 5
+success "System agrees with all requirements!"
+sleep 2

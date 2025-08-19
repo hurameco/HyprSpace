@@ -8,8 +8,8 @@ sudo pacman -S grub efibootmgr os-prober --noconfirm >/dev/null 2>&1
 
 if ! command -v efibootmgr >/dev/null 2>&1 || ! efibootmgr >/dev/null 2>&1; then
     rwarning "efibootmgr command failed or not available. Skipping GRUB installation."
-    sleep 5
-    return
+    sleep 2
+    return 0
 fi
 
 # Remove existing GRUB entries from efibootmgr
@@ -60,5 +60,5 @@ if [ -n "$grub_boot_id" ]; then
     efibootmgr -o "$cleaned_boot_order"
 fi
 
-rsuccess "GRUB successfully installed and configured!"
-sleep 5
+success "GRUB successfully installed and configured!"
+sleep 2

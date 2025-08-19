@@ -37,3 +37,6 @@ if ! command -v yay &>/dev/null; then
     rm -rf yay-bin
     cd ~
 fi
+
+success "Chaotic-AUR and YAY successfully configured!"
+sleep 2
