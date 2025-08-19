@@ -48,11 +48,13 @@ echo -e "Cloning the HyprSpace repository..."
 
 git clone --progress https://github.com/hurameco/hyprspace.git "$hyprspace_path" 2>&1
 # Change directory to the cloned repository
-cd "$hyprspace_path"
+cd "$hyprspace_path" || { echo "Error: Failed to change to $hyprspace_path"; exit 1; }
 
 # Run the installer
-source ./core/utils.sh
-source ./installer.sh
+echo "Loading utilities..."
+source "$hyprspace_path/core/utils.sh" || { echo "Error: Failed to source utils.sh"; exit 1; }
+echo "Running installer..."
+source "$hyprspace_path/installer.sh" || { echo "Error: Failed to source installer.sh"; exit 1; }
 
 # logo
 # info "Welcome to HyprSpace Installer!"
