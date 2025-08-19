@@ -27,15 +27,7 @@ if [ -d "$hyprspace_path" ]; then
 fi
 
 # Install required packages
-printf "Updating system...\n"
-sudo pacman -Syu --noconfirm 2>&1 | while IFS= read -r line; do
-    if [[ "$line" =~ Total:\ *([0-9]+)/([0-9]+) ]]; then
-        printf "\rDownloading: %s/%s packages" "${BASH_REMATCH[1]}" "${BASH_REMATCH[2]}"
-    elif [[ "$line" =~ \(([0-9]+)/([0-9]+)\) ]]; then
-        printf "\rInstalling: %s/%s packages" "${BASH_REMATCH[1]}" "${BASH_REMATCH[2]}"
-    fi
-done
-printf "Installing required packages...\n"
+printf "Updating system and installing required packages...\n"
 sudo pacman -Syu --noconfirm base-devel git 2>&1 | while IFS= read -r line; do
     if [[ "$line" =~ Total:\ *([0-9]+)/([0-9]+) ]]; then
         printf "\rDownloading: %s/%s packages" "${BASH_REMATCH[1]}" "${BASH_REMATCH[2]}"

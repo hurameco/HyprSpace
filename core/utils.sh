@@ -38,15 +38,15 @@ success()  { printf "\n${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] 
 error()    { printf "\n${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_RED}ERROR${NC}\t${DARK_GREY}|${NC} %s" "$*"; exit 1; }
 critical() { printf "\n${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${RED}CRITICAL${NC}\t${DARK_GREY}|${NC} %s" "$*"; exit 1; }
 
-rspam()     { printf "\r${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_WHITE}SPAM${NC}\t\t${DARK_GREY}|${NC} %s" "$*"; }
-rdebug()    { printf "\r${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${CYAN}DEBUG${NC}\t${DARK_GREY}|${NC} %s" "$*"; }
-rverbose()  { printf "\r${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_CYAN}VERBOSE${NC}\t${DARK_GREY}|${NC} %s" "$*"; }
-rinfo()     { printf "\r${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_BLUE}INFO${NC}\t\t${DARK_GREY}|${NC} %s" "$*"; }
-rnotice()   { printf "\r${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${MAGENTA}NOTICE${NC}\t${DARK_GREY}|${NC} %s" "$*"; }
-rwarning()  { printf "\r${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${YELLOW}WARNING${NC}\t${DARK_GREY}|${NC} %s" "$*"; }
-rsuccess()  { printf "\r${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_GREEN}SUCCESS${NC}\t${DARK_GREY}|${NC} %s" "$*"; }
-rerror()    { printf "\r${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_RED}ERROR${NC}\t${DARK_GREY}|${NC} %s" "$*"; exit 1; }
-rcritical() { printf "\r${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${RED}CRITICAL${NC}\t${DARK_GREY}|${NC} %s" "$*"; exit 1; }
+rspam()     { printf "\r\033[2K${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_WHITE}SPAM${NC}\t\t${DARK_GREY}|${NC} %s" "$*"; }
+rdebug()    { printf "\r\033[2K${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${CYAN}DEBUG${NC}\t${DARK_GREY}|${NC} %s" "$*"; }
+rverbose()  { printf "\r\033[2K${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_CYAN}VERBOSE${NC}\t${DARK_GREY}|${NC} %s" "$*"; }
+rinfo()     { printf "\r\033[2K${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_BLUE}INFO${NC}\t\t${DARK_GREY}|${NC} %s" "$*"; }
+rnotice()   { printf "\r\033[2K${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${MAGENTA}NOTICE${NC}\t${DARK_GREY}|${NC} %s" "$*"; }
+rwarning()  { printf "\r\033[2K${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${YELLOW}WARNING${NC}\t${DARK_GREY}|${NC} %s" "$*"; }
+rsuccess()  { printf "\r\033[2K${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_GREEN}SUCCESS${NC}\t${DARK_GREY}|${NC} %s" "$*"; }
+rerror()    { printf "\r\033[2K${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_RED}ERROR${NC}\t${DARK_GREY}|${NC} %s" "$*"; exit 1; }
+rcritical() { printf "\r\033[2K${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${RED}CRITICAL${NC}\t${DARK_GREY}|${NC} %s" "$*"; exit 1; }
 
 logo() {
     clear
@@ -64,4 +64,8 @@ logo() {
 ╚══════════════════════════════════════════════════════════════════════════════════╝${NC}\n"
 }
 
-export -f spam debug verbose info notice warning success error critical elapsed_time
+hold(){
+    read -n 1 -s < /dev/tty
+}
+
+export -f spam debug verbose info notice warning success error critical elapsed_time hold
