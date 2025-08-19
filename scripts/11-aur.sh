@@ -1,10 +1,9 @@
 #!/bin/bash
 
 logo
-notice "Instaling and Configuring Chaotic-AUR! [1/2]\n"
-
 
 # Only add Chaotic-AUR if the architecture is x86_64 so ARM users can build the packages
+rnotice "AUR :: [1/2] :: Instaling and Configuring Chaotic-AUR! [1/2]"
 if [[ "$(uname -m)" == "x86_64" ]] && ! command -v yay &>/dev/null; then
 
     # Try installing Chaotic-AUR keyring and mirrorlist
@@ -16,20 +15,20 @@ if [[ "$(uname -m)" == "x86_64" ]] && ! command -v yay &>/dev/null; then
 
         # Add Chaotic-AUR repo to pacman config
         if ! grep -q "chaotic-aur" /etc/pacman.conf; then
-        echo -e '\n[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist' | sudo tee -a /etc/pacman.conf >/dev/null
+            echo -e '\n[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist' | sudo tee -a /etc/pacman.conf >/dev/null
         fi
 
         # Install yay directly from Chaotic-AUR
-        sudo pacman -Sy --needed --noconfirm yay
-    else
-        echo "Failed to install Chaotic-AUR, so won't include it in pacman config!"
+        rnotice "AUR :: [2/2] :: Installing YAY!"
+        sudo pacman -Sy --needed --noconfirm yay >/dev/null 2>&1
     fi
 fi
 
 # Manually install yay from AUR if not already available
+rnotice "AUR :: [2/2] :: Manually installing YAY!"
 if ! command -v yay &>/dev/null; then
     # Install build tools
-    sudo pacman -Sy --needed --noconfirm base-devel
+    sudo pacman -Sy --needed --noconfirm base-devel >/dev/null 2>&1
     cd /tmp
     rm -rf yay-bin
     git clone https://aur.archlinux.org/yay-bin.git

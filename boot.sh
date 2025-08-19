@@ -10,6 +10,7 @@ clear
 
 # Default HyprSpace path
 hyprspace_path="$HOME/.hyprspace"
+export -f hyprspace_path
 
 # Check if the path exists
 if [ -d "$hyprspace_path" ]; then

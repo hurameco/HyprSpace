@@ -17,6 +17,7 @@ LIGHT_BLUE='\033[0;94m'     # Light Blue
 LIGHT_MAGENTA='\033[0;95m'  # Light Purple
 LIGHT_CYAN='\033[0;96m'     # Light Cyan
 LIGHT_WHITE='\033[0;97m'    # Light White
+NC='\033[0m'  # No Color/Reset
 
 start_time=$SECONDS
 
@@ -27,16 +28,25 @@ elapsed_time() {
 }
 
 # Enhanced logging functions with tab alignment
-NC='\033[0m'  # No Color/Reset
-spam()     { printf "${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_WHITE}SPAM${NC}\t\t${DARK_GREY}|${NC} %s\n" "$*"; }
-debug()    { printf "${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${CYAN}DEBUG${NC}\t${DARK_GREY}|${NC} %s\n" "$*"; }
-verbose()  { printf "${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_CYAN}VERBOSE${NC}\t${DARK_GREY}|${NC} %s\n" "$*"; }
-info()     { printf "${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_BLUE}INFO${NC}\t\t${DARK_GREY}|${NC} %s\n" "$*"; }
-notice()   { printf "${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${MAGENTA}NOTICE${NC}\t${DARK_GREY}|${NC} %s\n" "$*"; }
-warning()  { printf "${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${YELLOW}WARNING${NC}\t${DARK_GREY}|${NC} %s\n" "$*"; }
-success()  { printf "${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_GREEN}SUCCESS${NC}\t${DARK_GREY}|${NC} %s\n" "$*"; }
-error()    { printf "${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_RED}ERROR${NC}\t${DARK_GREY}|${NC} %s\n" "$*"; exit 1; }
-critical() { printf "${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${RED}CRITICAL${NC}\t${DARK_GREY}|${NC} %s\n" "$*"; exit 1; }
+spam()     { printf "\n${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_WHITE}SPAM${NC}\t\t${DARK_GREY}|${NC} %s" "$*"; }
+debug()    { printf "\n${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${CYAN}DEBUG${NC}\t${DARK_GREY}|${NC} %s" "$*"; }
+verbose()  { printf "\n${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_CYAN}VERBOSE${NC}\t${DARK_GREY}|${NC} %s" "$*"; }
+info()     { printf "\n${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_BLUE}INFO${NC}\t\t${DARK_GREY}|${NC} %s" "$*"; }
+notice()   { printf "\n${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${MAGENTA}NOTICE${NC}\t${DARK_GREY}|${NC} %s" "$*"; }
+warning()  { printf "\n${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${YELLOW}WARNING${NC}\t${DARK_GREY}|${NC} %s" "$*"; }
+success()  { printf "\n${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_GREEN}SUCCESS${NC}\t${DARK_GREY}|${NC} %s" "$*"; }
+error()    { printf "\n${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_RED}ERROR${NC}\t${DARK_GREY}|${NC} %s" "$*"; exit 1; }
+critical() { printf "\n${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${RED}CRITICAL${NC}\t${DARK_GREY}|${NC} %s" "$*"; exit 1; }
+
+rspam()     { printf "\r${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_WHITE}SPAM${NC}\t\t${DARK_GREY}|${NC} %s" "$*"; }
+rdebug()    { printf "\r${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${CYAN}DEBUG${NC}\t${DARK_GREY}|${NC} %s" "$*"; }
+rverbose()  { printf "\r${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_CYAN}VERBOSE${NC}\t${DARK_GREY}|${NC} %s" "$*"; }
+rinfo()     { printf "\r${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_BLUE}INFO${NC}\t\t${DARK_GREY}|${NC} %s" "$*"; }
+rnotice()   { printf "\r${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${MAGENTA}NOTICE${NC}\t${DARK_GREY}|${NC} %s" "$*"; }
+rwarning()  { printf "\r${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${YELLOW}WARNING${NC}\t${DARK_GREY}|${NC} %s" "$*"; }
+rsuccess()  { printf "\r${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_GREEN}SUCCESS${NC}\t${DARK_GREY}|${NC} %s" "$*"; }
+rerror()    { printf "\r${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_RED}ERROR${NC}\t${DARK_GREY}|${NC} %s" "$*"; exit 1; }
+rcritical() { printf "\r${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${RED}CRITICAL${NC}\t${DARK_GREY}|${NC} %s" "$*"; exit 1; }
 
 logo() {
     clear
