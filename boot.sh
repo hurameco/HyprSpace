@@ -27,9 +27,21 @@ fi
 
 # Install required packages
 echo -e "Updating system..."
-sudo pacman -Syu --noconfirm >/dev/null 2>&1
+sudo pacman -Syu --noconfirm 2>&1 | while IFS= read -r line; do
+    if [[ "$line" =~ Total:\ *([0-9]+)/([0-9]+) ]]; then
+        printf "\rDownloading: ${BASH_REMATCH[1]}/${BASH_REMATCH[2]} packages"
+    elif [[ "$line" =~ \(([0-9]+)/([0-9]+)\) ]]; then
+        printf "\rInstalling: ${BASH_REMATCH[1]}/${BASH_REMATCH[2]} packages"
+    fi
+done
 echo -e "Installing required packages..."
-sudo pacman -S --noconfirm base-devel git >/dev/null 2>&1
+sudo pacman -Syu --noconfirm base-devel git 2>&1 | while IFS= read -r line; do
+    if [[ "$line" =~ Total:\ *([0-9]+)/([0-9]+) ]]; then
+        printf "\rDownloading: ${BASH_REMATCH[1]}/${BASH_REMATCH[2]} packages"
+    elif [[ "$line" =~ \(([0-9]+)/([0-9]+)\) ]]; then
+        printf "\rInstalling: ${BASH_REMATCH[1]}/${BASH_REMATCH[2]} packages"
+    fi
+done
 
 # Clone the repository
 echo -e "Cloning the HyprSpace repository..."
@@ -38,8 +50,8 @@ git clone --progress https://github.com/hurameco/hyprspace.git "$hyprspace_path"
 # Change directory to the cloned repository
 cd "$hyprspace_path"
 
-# # Run the installer
-# source ./installer.sh
+# Run the installer
+source ./installer.sh
 
 # logo
 # info "Welcome to HyprSpace Installer!"
