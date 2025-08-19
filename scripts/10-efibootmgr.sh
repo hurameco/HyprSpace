@@ -7,7 +7,7 @@ rnotice "Boot :: [1/6] :: Installing necessary packages for GRUB"
 sudo pacman -S grub efibootmgr os-prober --noconfirm >/dev/null 2>&1
 
 if ! command -v efibootmgr >/dev/null 2>&1 || ! efibootmgr >/dev/null 2>&1; then
-    rwarning "efibootmgr command failed or not available. Skipping GRUB installation."
+    warning "efibootmgr command failed or not available. Skipping GRUB installation."
     sleep 2
     return 0
 fi

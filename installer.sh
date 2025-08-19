@@ -4,3 +4,6 @@ source "$hyprspace_path/scripts/00-guards.sh" || error "Failed to source guards.
 
 source "$hyprspace_path/scripts/10-efibootmgr.sh" || error "Failed to source efibootmgr.sh\n"
 source "$hyprspace_path/scripts/11-aur.sh" || error "Failed to source aur.sh\n"
+
+source "$hyprspace_path/scripts/20-gii.sh" || error "Failed to source gui.sh\n"
+source "$hyprspace_path/scripts/21-gpg.sh" || error "Failed to source gpg.sh\n"
