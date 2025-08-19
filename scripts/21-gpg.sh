@@ -4,7 +4,7 @@ rnotice "GPG :: [1/2] :: Installing necessary packages for GPG"
 sudo pacman -S gnupg --noconfirm >/dev/null 2>&1
 
 if ! command -v gpg >/dev/null 2>&1; then
-    rwarning "gpg command failed or not available. Skipping GPG installation."
+    warning "gpg command failed or not available. Skipping GPG installation."
     sleep 2
     return 0
 fi
