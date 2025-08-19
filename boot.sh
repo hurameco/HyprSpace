@@ -21,6 +21,7 @@ if [ -d "$hyprspace_path" ]; then
       echo -e "Exiting..."
       exit 1
   fi
+  rm -rf "$hyprspace_path"
 fi
 
 # Install required packages
