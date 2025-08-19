@@ -1,3 +1,5 @@
+#!/bin/bash
+
 logo
 
 rnotice "GPG :: [1/2] :: Installing necessary packages for GPG"
