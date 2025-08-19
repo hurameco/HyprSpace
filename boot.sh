@@ -31,17 +31,15 @@ echo -e "Installing required packages..."
 sudo pacman -Syu --noconfirm base-devel git >/dev/null 2>&1
 
 # Clone the repository
-echo o -e "Cloning the HyprSpace repository..."
+echo -e "Cloning the HyprSpace repository..."
 git clone https://github.com/hurameco/hyprspace.git "$hyprspace_path" > /dev/null 2>&1
-read -n 1 -s < /dev/tty
 # Change directory to the cloned repository
 cd "$hyprspace_path"
 
 # Run the installer
 source ./installer.sh
 
-
-clear
 logo
 info "Welcome to HyprSpace Installer!"
+read -n 1 -s < /dev/tty
 sleep 2
