@@ -3,7 +3,7 @@
 logo
 rnotice "Configuring git [1/1]"
 
-printf "\n\nEnter your git username:\n> "
+printf "\n\nEnter your git full name:\n> "
 read -r git_username < /dev/tty
 printf "\nEnter your git email:\n> "
 read -r git_email < /dev/tty
