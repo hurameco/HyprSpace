@@ -1,11 +1,10 @@
 #!/bin/bash
 
-echo -e "Welcome to HyprSpace Installer!\n"
-echo -e "This script will install and configure HyprSpace on your system.\n"
-echo -e "Please read the README.md file for more information.\n"
+echo -e "Welcome to HyprSpace Installer!"
+echo -e "This script will install and configure HyprSpace on your system."
+echo -e "Please read the README.md file for more information."
 
-
-echo -e "Press any key to continue... Ctrl+C to exit."
+echo -e "\nPress any key to continue... Ctrl+C to exit."
 read -n 1 -s
 clear
 
