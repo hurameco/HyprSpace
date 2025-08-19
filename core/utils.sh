@@ -1,18 +1,22 @@
 #!/bin/bash
 
 # Color codes for different log levels
-SPAM_COLOR='\033[2;37m'      # Dim gray
-DEBUG_COLOR='\033[0;36m'     # Cyan
-VERBOSE_COLOR='\033[0;37m'   # White/light gray
-INFO_COLOR='\033[0;34m'      # Blue
-NOTICE_COLOR='\033[0;35m'    # Magenta
-WARNING_COLOR='\033[0;33m'   # Yellow
-SUCCESS_COLOR='\033[0;32m'   # Green
-ERROR_COLOR='\033[0;31m'     # Red
-CRITICAL_COLOR='\033[1;91m'  # Bright red/bold
-ORANGE='\033[38;5;208m'      # Timestamp color
-GRAY='\033[0;90m'            # For brackets and separators
-NC='\033[0m'                 # No Color
+BLACK='\033[0;30m'        # Black
+RED='\033[0;31m'          # Red
+GREEN='\033[0;32m'        # Green
+YELLOW='\033[0;33m'       # Yellow
+BLUW='\033[0;34m'         # Blue
+MAGENTA='\033[0;35m'      # Magenta/Purple
+CYAN='\033[0;36m'         # Cyan
+WHITE='\033[0;37m'        # White/Light Gray
+DARK_GREY='\033[0;90m'    # Dark Gray
+LIGHT_RED='\033[0;91m'      # Light Red
+LIGHT_GREEN='\033[0;92m'    # Light Green
+LIGHT_YELLOW='\033[0;93m'   # Light Yellow
+LIGHT_BLUE='\033[0;94m'     # Light Blue
+LIGHT_MAGENTA='\033[0;95m'  # Light Purple
+LIGHT_CYAN='\033[0;96m'     # Light Cyan
+LIGHT_WHITE='\033[0;97m'    # Light White
 
 start_time=$SECONDS
 
@@ -23,29 +27,30 @@ elapsed_time() {
 }
 
 # Enhanced logging functions with tab alignment
-spam()     { printf "${GRAY}[${ORANGE}$(elapsed_time)${GRAY}] ${SPAM_COLOR}SPAM${NC}\t\t${GRAY}|${NC} %s\n" "$*"; }
-debug()    { printf "${GRAY}[${ORANGE}$(elapsed_time)${GRAY}] ${DEBUG_COLOR}DEBUG${NC}\t${GRAY}|${NC} %s\n" "$*"; }
-verbose()  { printf "${GRAY}[${ORANGE}$(elapsed_time)${GRAY}] ${VERBOSE_COLOR}VERBOSE${NC}\t${GRAY}|${NC} %s\n" "$*"; }
-info()     { printf "${GRAY}[${ORANGE}$(elapsed_time)${GRAY}] ${INFO_COLOR}INFO${NC}\t\t${GRAY}|${NC} %s\n" "$*"; }
-notice()   { printf "${GRAY}[${ORANGE}$(elapsed_time)${GRAY}] ${NOTICE_COLOR}NOTICE${NC}\t${GRAY}|${NC} %s\n" "$*"; }
-warning()  { printf "${GRAY}[${ORANGE}$(elapsed_time)${GRAY}] ${WARNING_COLOR}WARNING${NC}\t${GRAY}|${NC} %s\n" "$*"; }
-success()  { printf "${GRAY}[${ORANGE}$(elapsed_time)${GRAY}] ${SUCCESS_COLOR}SUCCESS${NC}\t${GRAY}|${NC} %s\n" "$*"; }
-error()    { printf "${GRAY}[${ORANGE}$(elapsed_time)${GRAY}] ${ERROR_COLOR}ERROR${NC}\t${GRAY}|${NC} %s\n" "$*"; exit 1; }
-critical() { printf "${GRAY}[${ORANGE}$(elapsed_time)${GRAY}] ${CRITICAL_COLOR}CRITICAL${NC}\t${GRAY}|${NC} %s\n" "$*"; exit 1; }
+NC='\033[0m'  # No Color/Reset
+spam()     { printf "${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_WHITE}SPAM${NC}\t\t${DARK_GREY}|${NC} %s\n" "$*"; }
+debug()    { printf "${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${CYAN}DEBUG${NC}\t${DARK_GREY}|${NC} %s\n" "$*"; }
+verbose()  { printf "${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_CYAN}VERBOSE${NC}\t${DARK_GREY}|${NC} %s\n" "$*"; }
+info()     { printf "${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_BLUE}INFO${NC}\t\t${DARK_GREY}|${NC} %s\n" "$*"; }
+notice()   { printf "${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${MAGENTA}NOTICE${NC}\t${DARK_GREY}|${NC} %s\n" "$*"; }
+warning()  { printf "${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${YELLOW}WARNING${NC}\t${DARK_GREY}|${NC} %s\n" "$*"; }
+success()  { printf "${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_GREEN}SUCCESS${NC}\t${DARK_GREY}|${NC} %s\n" "$*"; }
+error()    { printf "${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${LIGHT_RED}ERROR${NC}\t${DARK_GREY}|${NC} %s\n" "$*"; exit 1; }
+critical() { printf "${DARK_GREY}[${LIGHT_YELLOW}$(elapsed_time)${DARK_GREY}] ${RED}CRITICAL${NC}\t${DARK_GREY}|${NC} %s\n" "$*"; exit 1; }
 
 logo() {
     clear
-    printf "${SUCCESS_COLOR}
+    printf "${LIGHT_CYAN}
 ╔══════════════════════════════════════════════════════════════════════════════════╗
 ║                                                                                  ║
-║  ██╗  ██╗██╗   ██╗██████╗ ██████╗ ███████╗██████╗  █████╗  ██████╗███████╗       ║
-║  ██║  ██║╚██╗ ██╔╝██╔══██╗██╔══██╗██╔════╝██╔══██╗██╔══██╗██╔════╝██╔════╝       ║
-║  ███████║ ╚████╔╝ ██████╔╝██████╔╝███████╗██████╔╝███████║██║     █████╗         ║
-║  ██╔══██║  ╚██╔╝  ██╔═══╝ ██╔══██╗╚════██║██╔═══╝ ██╔══██║██║     ██╔══╝         ║
-║  ██║  ██║   ██║   ██║     ██║  ██║███████║██║     ██║  ██║╚██████╗███████╗       ║
-║  ╚═╝  ╚═╝   ╚═╝   ╚═╝     ╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝  ╚═╝ ╚═════╝╚══════╝       ║
+║  ${LIGHT_BLUE}██╗  ██╗██╗   ██╗██████╗ ██████╗ ███████╗██████╗  █████╗  ██████╗███████╗${LIGHT_CYAN}       ║
+║  ${LIGHT_BLUE}██║  ██║╚██╗ ██╔╝██╔══██╗██╔══██╗██╔════╝██╔══██╗██╔══██╗██╔════╝██╔════╝${LIGHT_CYAN}       ║
+║  ${LIGHT_BLUE}███████║ ╚████╔╝ ██████╔╝██████╔╝███████╗██████╔╝███████║██║     █████╗${LIGHT_CYAN}         ║
+║  ${LIGHT_BLUE}██╔══██║  ╚██╔╝  ██╔═══╝ ██╔══██╗╚════██║██╔═══╝ ██╔══██║██║     ██╔══╝${LIGHT_CYAN}         ║
+║  ${LIGHT_BLUE}██║  ██║   ██║   ██║     ██║  ██║███████║██║     ██║  ██║╚██████╗███████╗${LIGHT_CYAN}       ║
+║  ${LIGHT_BLUE}╚═╝  ╚═╝   ╚═╝   ╚═╝     ╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝  ╚═╝ ╚═════╝╚══════╝${LIGHT_CYAN}       ║
 ║                                                                                  ║
-║  ${ORANGE}A custom installation for ${WARNING_COLOR}Hyprland${NC} ${ORANGE}by ${CRITICAL_COLOR}hurameco${SUCCESS_COLOR}                                  ║
+║  ${LIGHT_GREEN}A custom installation for ${LIGHT_MAGENTA}Hyprland${NC} ${LIGHT_GREEN}by ${LIGHT_YELLOW}hurameco${LIGHT_CYAN}                                  ║
 ╚══════════════════════════════════════════════════════════════════════════════════╝${NC}\n"
 }
 
