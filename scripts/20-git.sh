@@ -1,11 +1,11 @@
 #!/bin/bash
 
 logo
-notice "Configuring git [1/1]\n\n"
+rnotice "Configuring git [1/1]"
 
-echo -e "Enter your git username:\n> "
+printf "\n\nEnter your git username:\n> "
 read -r git_username < /dev/tty
-echo -e "Enter your git email:\n> "
+printf "\nEnter your git email:\n> "
 read -r git_email < /dev/tty
 
 git config --global user.name "$git_username"
