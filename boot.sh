@@ -14,7 +14,7 @@ hyprspace_path="$HOME/.hyprspace"
 # Check if the path exists
 if [ -d "$hyprspace_path" ]; then
   # If the path exists, ask the user if they want to overwrite it
-  overwrite = "y"
+  overwrite="y"
   echo -e "The path $hyprspace_path already exists.\nDo you want to overwrite it? (Y/n)"
   read -r overwrite < /dev/tty
   if [ "$overwrite" != "y" ]; then
