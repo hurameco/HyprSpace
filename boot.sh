@@ -34,7 +34,7 @@ sudo pacman -S --noconfirm base-devel git >/dev/null 2>&1
 # Clone the repository
 echo -e "Cloning the HyprSpace repository..."
 
-git clone --progress https://github.com/hurameco/hyprspace.git "$hyprspace_path"
+# git clone --progress https://github.com/hurameco/hyprspace.git "$hyprspace_path"
 # Change directory to the cloned repository
 # cd "$hyprspace_path"
 
