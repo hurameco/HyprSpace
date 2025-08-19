@@ -6,7 +6,7 @@ echo -e "Please read the README.md file for more information.\n"
 
 
 echo -e "Press any key to continue... Ctrl+C to exit."
-head -n 1 -s
+read -n 1 -s
 clear
 
 # Default HyprSpace path
@@ -17,7 +17,7 @@ if [ -d "$hyprspace_path" ]; then
   # If the path exists, ask the user if they want to overwrite it
   overwrite = "y"
   echo -e "The path $hyprspace_path already exists. Do you want to overwrite it? (Y/n)"
-  overwrite=$(head -n 1) || "y"
+  read -r overwrite
   if [ "$overwrite" != "y" ]; then
       echo -e "Exiting..."
       exit 1
