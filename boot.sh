@@ -29,7 +29,7 @@ fi
 
 # Install required packages
 printf "Updating system and installing required packages...\n"
-sudo pacman -Syu --noconfirm base-devel git 2>&1 | while IFS= read -r line; do
+sudo pacman -Syu --noconfirm --needed base-devel git 2>&1 | while IFS= read -r line; do
     if [[ "$line" =~ Total:\ *([0-9]+)/([0-9]+) ]]; then
         printf "\rDownloading: %s/%s packages" "${BASH_REMATCH[1]}" "${BASH_REMATCH[2]}"
     elif [[ "$line" =~ \(([0-9]+)/([0-9]+)\) ]]; then

@@ -3,7 +3,7 @@
 logo
 
 rnotice "GPG :: [1/2] :: Installing necessary packages for GPG"
-sudo pacman -S gnupg --noconfirm >/dev/null 2>&1
+sudo pacman -S --noconfirm --needed gnupg >/dev/null 2>&1
 
 if ! command -v gpg >/dev/null 2>&1; then
     warning "gpg command failed or not available. Skipping GPG installation."

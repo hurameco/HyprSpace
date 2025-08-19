@@ -19,7 +19,7 @@ if [[ "$(uname -m)" == "x86_64" ]] && ! command -v yay &>/dev/null; then
 
         # Install yay directly from Chaotic-AUR
         rnotice "AUR :: [2/2] :: Installing YAY!"
-        sudo pacman -Sy --needed --noconfirm yay >/dev/null 2>&1
+        sudo pacman -Sy --noconfirm --needed yay >/dev/null 2>&1
     fi
 fi
 
@@ -27,7 +27,7 @@ fi
 if ! command -v yay &>/dev/null; then
     # Install build tools
     rnotice "AUR :: [2/2] :: Manually installing YAY!"
-    sudo pacman -Sy --needed --noconfirm base-devel >/dev/null 2>&1
+    sudo pacman -Sy --noconfirm --needed base-devel >/dev/null 2>&1
     cd /tmp
     rm -rf yay-bin
     git clone https://aur.archlinux.org/yay-bin.git
