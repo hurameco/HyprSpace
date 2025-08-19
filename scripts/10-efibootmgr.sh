@@ -70,7 +70,7 @@ if [ -n "$grub_boot_id" ]; then
     efibootmgr -o "$cleaned_boot_order"
     success "Boot order updated. GRUB is set as the primary boot entry."
 else
-    error "GRUB boot entry not found in efibootmgr."
+    error "Failed to find GRUB boot entry not found in efibootmgr."
 fi
 success "GRUB installation and configuration completed."
 
