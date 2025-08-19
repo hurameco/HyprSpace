@@ -6,9 +6,16 @@ logo
 rnotice "Boot :: [1/6] :: Installing necessary packages for GRUB"
 sudo pacman -S grub efibootmgr os-prober --noconfirm >/dev/null 2>&1
 
-# Remove existing GRUB entries from efibootmgr
+if ! command -v efibootmgr >/dev/null 2>&1 || ! efibootmgr >/dev/null 2>&1; then
+    rwarning "efibootmgr command failed or not available. Skipping GRUB installation."
+    sleep 5
+    return
+fi
 
+# Remove existing GRUB entries from efibootmgr
+hold
 rnotice "Boot :: [2/6] :: Checking for existing GRUB entries in efibootmgr"
+hold
 grub_entries=$(efibootmgr | grep -i 'grub' | grep -o 'Boot[0-9A-F]*' | cut -c5-)
 if [ -n "$grub_entries" ]; then
     for entry_id in $grub_entries; do
