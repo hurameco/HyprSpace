@@ -10,6 +10,7 @@ source "$hyprspace_path/scripts/21-gpg.sh" || error "Failed to source gpg.sh\n"
 source "$hyprspace_path/scripts/22-faillock.sh" || error "Failed to source faillock.sh\n"
 source "$hyprspace_path/scripts/23-network.sh" || error "Failed to source network.sh\n"
 source "$hyprspace_path/scripts/24-power.sh" || error "Failed to source power.sh\n"
+source "$hyprspace_path/scripts/25-timezones.sh" || error "Failed to source timezones.sh\n"
 
 
 
